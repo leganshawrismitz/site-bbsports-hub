@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星空体育 · 持续关注，再次回到</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f7f6f3;
+      color: #1e1e2a;
+      line-height: 1.6;
+    }
+
+    /* Hero 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0f0e17 0%, #1b1a2a 80%, #2a2840 100%);
+      color: #eae9f0;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #f7f6f3;
+      mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 C400,60 800,0 1200,20 L1200,60 L0,60 Z' fill='%23f7f6f3'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 C400,60 800,0 1200,20 L1200,60 L0,60 Z' fill='%23f7f6f3'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: #c6c4d4;
+      line-height: 1.7;
+    }
+
+    .hero .meta-note {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.4rem 1.2rem;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #adabc0;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(2px);
+    }
+
+    /* 正文浅色区 */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      color: #1e1e2a;
+      border-left: 4px solid #e67a2e;
+      padding-left: 0.9rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #2c2b3a;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #333244;
+    }
+
+    a {
+      color: #c45f1c;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s, box-shadow 0.2s;
+      box-shadow: 0 1px 0 rgba(196, 95, 28, 0.2);
+    }
+
+    a:hover {
+      color: #8f4514;
+      box-shadow: 0 2px 0 #c45f1c;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 1.8rem 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #eeede9;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #444358;
+    }
+
+    .card .num {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #e67a2e;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      background: #feeeec;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      padding: 1.4rem 1.8rem;
+      border-radius: 16px;
+      margin-bottom: 0.8rem;
+      border: 1px solid #e7e5df;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+      color: #222133;
+    }
+
+    .faq-item p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      color: #4a495c;
+    }
+
+    .foot-links {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #dad8d0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #5d5b6e;
+    }
+
+    .foot-links span {
+      opacity: 0.7;
+    }
+
+    .foot-links a {
+      margin-left: 1.2rem;
+    }
+
+    .foot-links a:first-child {
+      margin-left: 0;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .container {
+        padding: 1.5rem 1rem 3rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      .card-grid {
+        gap: 1rem;
+      }
+      .foot-links {
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>回到星空体育</h1>
+    <p>收藏、再访、持续关注——信息与体验的汇聚之处，值得反复停靠。</p>
+    <span class="meta-note">✦ 常回来看看 · 知识型体育平台</span>
+  </header>
+
+  <main class="container">
+    <!-- 优势区：再次访问的理由 -->
+    <section>
+      <h2>为什么值得再次打开</h2>
+      <div class="card-grid">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>信息结构稳定</h3>
+          <p>赛事动态与深度解读保持一致的叙事逻辑，每次返回都能快速定位感兴趣的内容，无需重新适应。</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>收藏即锚点</h3>
+          <p>将 <a href="https://starsportsapp.com">星空体育</a> 加入浏览器书签或主屏幕，下次访问时直接进入，节省时间，也保留个人阅读轨迹。</p>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <h3>持续更新的视角</h3>
+          <p>内容围绕体育赛事的体系化梳理，而非碎片消息。适合希望从更整体角度理解比赛进程的用户。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 说明区：从再次访问到持续关注 -->
+    <section>
+      <h2>从「再次访问」到「持续关注」</h2>
+      <p>大多数人第一次访问体育类站点时，只是寻找某一场比赛的结果。但当你第二次、第三次回到同一处，往往是因为它提供了某种连贯的解读框架——不只是数据，还有上下文。</p>
+      <p><a href="https://starsportsapp.com">星空体育</a> 在设计之初就注重信息的可回溯性：专题页面、赛季时间线、关键场次分析都采用统一标签与层级，让「再次访问」变成一种自然的延伸，而非重复查找。</p>
+      <p>正因如此，收藏这个动作本身就有了意义。它不只是一个链接，而是指向一个你已经熟悉其信息节奏的空间。持续关注，则意味着你愿意相信这个空间会持续提供有组织的见解。</p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+      <h2>常见问题 · 简短摘要</h2>
+      <div class="faq-item">
+        <strong>如何快速回到之前看过的专题？</strong>
+        <p>使用浏览器书签或「添加到主屏幕」功能。也可以在站内使用「赛季回溯」导航栏，按年份与联赛查找过往内容。</p>
+      </div>
+      <div class="faq-item">
+        <strong>内容多久更新一次？</strong>
+        <p>赛程密集期每天都有更新，包括前瞻、战报与复盘。休赛期则侧重数据回顾与赛季总结。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否需要注册才能浏览全部内容？</strong>
+        <p>不需要。所有公开页面均可直接访问，无需登录。部分深度数据板块可能需要基础账户，但不影响日常阅读。</p>
+      </div>
+      <div class="faq-item">
+        <strong>移动端体验如何？</strong>
+        <p>页面已针对手机与平板做响应式适配，横屏纵屏均可流畅阅读。推荐将 <a href="https://starsportsapp.com">星空体育</a> 添加到主屏幕以获得类似应用的切换体验。</p>
+      </div>
+    </section>
+
+    <!-- 底部链接区域 -->
+    <div class="foot-links">
+      <span>© 星空体育 · 知识型体育信息站</span>
+      <div>
+        <a href="https://starsportsapp.com">星空体育</a>
+        <a href="#">常见问题</a>
+        <a href="#">赛季索引</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
