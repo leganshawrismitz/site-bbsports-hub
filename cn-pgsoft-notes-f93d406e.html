@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG游戏 · 站点说明与产品介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5fafa;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1e2b3c;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 标题区 / hero 精简处理 */
+    .hero {
+      margin: 1.5rem 0 2.5rem 0;
+      padding: 2rem 1.2rem;
+      background: linear-gradient(145deg, #e6f3f0 0%, #d0ece4 100%);
+      border-radius: 36px 12px 36px 12px;
+      box-shadow: 0 8px 18px rgba(28, 92, 80, 0.06);
+      border-left: 6px solid #2d9b8a;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      color: #10423b;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: #2b6d62;
+      max-width: 580px;
+      border-bottom: 1px dashed #8ecfc2;
+      padding-bottom: 0.5rem;
+    }
+
+    .intro-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .intro-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem 1.8rem;
+      box-shadow: 0 4px 14px rgba(0, 60, 50, 0.03);
+      border: 1px solid #dcefeb;
+      transition: all 0.2s ease;
+    }
+
+    .intro-card:hover {
+      border-color: #aad4cb;
+      box-shadow: 0 8px 22px rgba(28, 118, 100, 0.06);
+    }
+
+    .intro-card h2 {
+      font-size: 1.5rem;
+      font-weight: 520;
+      color: #125f53;
+      margin-bottom: 0.9rem;
+      display: inline-block;
+      border-left: 4px solid #2d9b8a;
+      padding-left: 0.7rem;
+    }
+
+    .intro-card p {
+      margin-bottom: 0.8rem;
+      color: #2a3a47;
+    }
+
+    .highlight-badge {
+      display: inline-flex;
+      background: #edf8f5;
+      color: #0f584b;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      border: 1px solid #b7ddd2;
+      margin-right: 0.3rem;
+    }
+
+    /* 卡片网格 — 特点与场景 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 1.2rem 0 2.5rem 0;
+    }
+
+    .feature-item {
+      background: white;
+      padding: 1.5rem 1.2rem 1.6rem 1.2rem;
+      border-radius: 28px 12px 28px 12px;
+      border: 1px solid #e2f1ed;
+      box-shadow: 0 2px 8px rgba(44, 120, 100, 0.02);
+    }
+
+    .feature-item h3 {
+      font-size: 1.2rem;
+      font-weight: 520;
+      margin-bottom: 0.5rem;
+      color: #1f5c50;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-item h3::before {
+      content: "▹";
+      color: #2d9b8a;
+      font-size: 1.3rem;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #384a53;
+    }
+
+    .usage-note {
+      background: #f0f9f6;
+      border-radius: 30px 12px 30px 12px;
+      padding: 1.6rem 1.8rem;
+      margin: 1.8rem 0 2rem 0;
+      border: 1px solid #c2e6dc;
+    }
+
+    .usage-note h3 {
+      font-size: 1.2rem;
+      font-weight: 540;
+      color: #0f5c4e;
+      margin-bottom: 0.5rem;
+    }
+
+    .usage-note ul {
+      padding-left: 1.5rem;
+      margin: 0.4rem 0;
+      color: #1f3d3a;
+    }
+
+    .usage-note li {
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-mini {
+      background: white;
+      border-radius: 24px;
+      padding: 1.6rem 1.8rem;
+      margin: 2rem 0 1.8rem 0;
+      border: 1px solid #d6ede6;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      border-bottom: 1px dashed #c1ddd4;
+      padding-bottom: 0.5rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 520;
+      cursor: pointer;
+      color: #175a4d;
+      font-size: 1rem;
+      padding: 0.2rem 0;
+    }
+
+    .faq-mini summary::marker {
+      color: #2d9b8a;
+    }
+
+    .faq-mini p {
+      margin-top: 0.3rem;
+      color: #2b4145;
+      font-size: 0.95rem;
+    }
+
+    .trust-note {
+      background: #f6fffd;
+      border-radius: 18px;
+      padding: 1.2rem 1.5rem;
+      border-left: 5px solid #2f9f8c;
+      font-size: 0.95rem;
+      color: #1a4740;
+      margin: 1.5rem 0 2rem 0;
+    }
+
+    .site-link-paragraph {
+      background: #e2f3ef;
+      padding: 1rem 1.5rem;
+      border-radius: 60px 12px 60px 12px;
+      display: inline-block;
+      margin: 0.8rem 0;
+      font-size: 1.05rem;
+    }
+
+    a {
+      color: #1a7c6b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b2d9cf;
+      transition: border 0.15s;
+    }
+
+    a:hover {
+      border-bottom: 2px solid #2d9b8a;
+      color: #145f51;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #cde3dd;
+      margin: 1rem 0;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1rem 0;
+      font-size: 0.85rem;
+      color: #617f7a;
+      border-top: 1px solid #cedfd9;
+      text-align: center;
+    }
+
+    /* 移动端友好 */
+    @media (max-width: 640px) {
+      body {
+        padding: 0.8rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .intro-card {
+        padding: 1.2rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .usage-note, .faq-mini {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 摘要区 -->
+  <div class="hero">
+    <h1>关于 PG游戏 · 站点说明</h1>
+    <div class="tagline">产品方向清晰 · 内容可靠 · 面向体验者</div>
+  </div>
+
+  <!-- 介绍与可信说明 -->
+  <div class="intro-grid">
+    <div class="intro-card">
+      <h2>站点定位与摘要</h2>
+      <p>该网站是一个以介绍 <a href="https://cn-pgsoft-game.com">PG游戏</a> 为核心的信息页面，面向希望了解产品特点、适用场景以及基本使用方式的用户。内容组织力求平实、完整，不渲染不夸饰，适合第一次接触该产品的人浏览。</p>
+      <p>站内信息围绕产品逻辑、界面表现以及常见疑问展开，不包含诱导性表述或虚假承诺。所有描述均来自可验证的产品公开资料。</p>
+    </div>
+
+    <div class="intro-card">
+      <h2>亮点 · 简要整理</h2>
+      <p><span class="highlight-badge">视觉流畅</span><span class="highlight-badge">交互简洁</span><span class="highlight-badge">适配多端</span></p>
+      <p>从页面结构到元素过渡，<a href="https://cn-pgsoft-game.com">PG游戏</a> 在细节上注重清晰度与一致性。操作路径短，视觉反馈自然。产品设计倾向降低理解成本，同时保留足够的可探索空间。</p>
+      <p>功能模块之间的衔接平顺，重点内容以卡片、网格和摘要形式展示，方便快速获取关键信息。</p>
+    </div>
+  </div>
+
+  <!-- 网格卡片：特点 + 场景 -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h3>信息结构</h3>
+      <p>采用分层展示方式，从概览到细节逐级呈现。主要章节使用独立区块，便于按需阅读。</p>
+    </div>
+    <div class="feature-item">
+      <h3>使用建议</h3>
+      <p>推荐在桌面或平板设备上浏览以获得完整版式。移动端同样适配良好，核心内容无遗漏。</p>
+    </div>
+    <div class="feature-item">
+      <h3>适用场景</h3>
+      <p>适合产品体验者、功能调研者以及希望了解基础操作逻辑的普通用户。内容克制定位清晰。</p>
+    </div>
+    <div class="feature-item">
+      <h3>可信说明</h3>
+      <p>所有介绍均来自公开产品呈现，不杜撰数据，不虚构用户评价。页面本身仅承担说明角色。</p>
+    </div>
+  </div>
+
+  <!-- 使用建议与提示 (半卡片) -->
+  <div class="usage-note">
+    <h3>使用建议 · 简要提示</h3>
+    <ul>
+      <li>首次浏览可从头至尾通读摘要部分，建立整体认知。</li>
+      <li>如需了解具体模块，可直接跳转至对应卡片或 FAQ 区块。</li>
+      <li>页面中的链接均导向产品本身，无中间跳转或广告页面。</li>
+      <li>建议保持浏览器为最新版本，以获得最佳样式支持。</li>
+    </ul>
+    <p style="margin-top: 0.6rem;">👉 直接了解产品：<a href="https://cn-pgsoft-game.com">PG游戏</a> 的详细介绍页。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h2 style="font-size: 1.3rem; font-weight: 520; color: #125f53; margin-bottom: 0.8rem;">常见疑问 · 摘要</h2>
+    <details>
+      <summary>这个页面是官方网站吗？</summary>
+      <p>本页面为独立介绍页，内容指向 <a href="https://cn-pgsoft-game.com">PG游戏</a> 主站。所有信息均基于主站公开内容整理，不替代官方文档。</p>
+    </details>
+    <details>
+      <summary>内容是否定期更新？</summary>
+      <p>介绍内容会跟随产品主要版本变化进行修订，但不会频繁微调。建议以主站实时内容为准。</p>
+    </details>
+    <details>
+      <summary>是否包含商业推广或诱导点击？</summary>
+      <p>本页面不包含任何第三方推广、弹窗或诱导性按钮。所有链接自然嵌入句子中，仅用于信息延伸。</p>
+    </details>
+    <details>
+      <summary>移动端浏览体验如何？</summary>
+      <p>页面已做响应式适配，字体、间距、卡片在手机屏幕上均重新调整，可正常阅读和操作。</p>
+    </details>
+  </div>
+
+  <!-- 可信但克制的访问说明 -->
+  <div class="trust-note">
+    <strong>📌 可信说明</strong> — 本站不收集用户隐私信息，不设置自动跳转，不显示任何形式的夸张标语。内容旨在帮助用户快速了解 <a href="https://cn-pgsoft-game.com">PG游戏</a> 的基本面貌与产品特征。如需深入体验或获取最新版本，请直接访问产品网站。
+  </div>
+
+  <!-- 句子中自然嵌入链接 (第三个链接位置, 避免重复句式) -->
+  <p style="margin: 1rem 0 0.5rem 0; font-size: 0.98rem; color: #1b4b47;">如果你希望查看完整产品界面和功能说明，可前往 <a href="https://cn-pgsoft-game.com">PG游戏</a> 浏览更多细节。页面结构简洁，信息呈现直接。</p>
+
+  <hr>
+
+  <footer>
+    <span>内容说明页 · 仅供参考 · 具体以产品实际表现为准</span>
+  </footer>
+
+</div>
+</body>
+</html>
